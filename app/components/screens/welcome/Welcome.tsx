@@ -1,7 +1,8 @@
-import { View, Text, Box, Heading, Center, VStack } from 'native-base';
+import { Box, Center, VStack } from 'native-base';
 import React, { FC } from 'react';
 import MyButton from '../../UI/Button';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import Header from '../../UI/Header';
 
 interface IWelcome {
   navigation: NavigationProp<ParamListBase>;
@@ -14,13 +15,14 @@ export const Welcome: FC<IWelcome> = ({ navigation }) => {
   return (
     <Center w="100%" h="100%" bg={'coolGray.600'}>
       <Box safeArea mt="95px" alignItems={'center'}>
-        <Heading fontSize={32} color={'white'} opacity={0.9} textAlign={'center'}>
-          Welcome to ProduceMe
-        </Heading>
+        <Header title="Welcome to ProduceMe" size={32} />
         <Box mt={26} maxW={287}>
-          <Heading textAlign={'center'} fontSize={16} color={'white'} opacity={0.7}>
-            Please login to your account or create new account to continue
-          </Heading>
+          <Header
+            title="Please login to your account or create new account to continue"
+            size={16}
+            opacity={0.7}
+            isCenter
+          />
         </Box>
         <VStack mt="80%" space="28px" minW={321}>
           <MyButton color="teal" title="Login" onPress={() => loginHandler()} />

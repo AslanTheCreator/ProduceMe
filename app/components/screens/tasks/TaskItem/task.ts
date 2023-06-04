@@ -1,19 +1,23 @@
 export interface ITask {
-  title: string;
+  desc: string;
+  time?: string;
   status?: string;
 }
 
 export const Task = [
   {
-    title: 'Market Research',
+    desc: 'Market Research',
+    time: '10:00',
     status: 'Done',
   },
   {
-    title: 'Sport time',
-    status: 'Progress',
+    desc: 'Sport time',
+    time: '10:00',
+    status: 'In Progress',
   },
   {
-    title: 'Work time',
-    status: 'Progress',
+    desc: 'Work time',
+    time: '10:00',
+    status: 'In Progress',
   },
 ];

@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
+import { Layout } from '../../layout/Layout';
+import Content from './Content';
 
-const Sport = () => {
+const Sport: FC = () => {
   return (
-    <View>
-      <Text>Sport</Text>
-    </View>
+    <Layout>
+      <Content />
+    </Layout>
   );
 };
 

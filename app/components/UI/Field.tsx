@@ -3,9 +3,9 @@ import { FormControl, Input } from 'native-base';
 
 interface IField {
   onChange: (value: string) => void;
-  label: string;
+  label?: string;
   value: string;
-  placeholder: string;
+  placeholder?: string;
   typeInput?: 'text' | 'password';
 }
 
@@ -15,6 +15,7 @@ const Field: FC<IField> = ({ label, typeInput, onChange, value, placeholder }) =
       <FormControl.Label>{label}</FormControl.Label>
       <Input
         bg={'coolGray.800'}
+        color={'white'}
         placeholder={placeholder}
         type={typeInput}
         value={value}

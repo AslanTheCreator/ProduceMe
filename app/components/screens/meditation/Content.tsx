@@ -1,23 +1,39 @@
-import React, { FC } from 'react';
-import { Box, Heading, VStack, Text, Image, Center } from 'native-base';
+import React, { FC, useState, useRef } from 'react';
+import { Box, VStack, Text, Image, Center } from 'native-base';
 import MyButton from '../../UI/Button';
+import Header from '../../UI/Header';
 
 const Content: FC = () => {
-  let seconds = 3600000;
+  const [minutes, setMinutes] = useState(15);
+  const [seconds, setSeconds] = useState('00');
+
+  const interval = useRef(0);
+
+  const [isActive, setIsActive] = useState(false);
+
+  let sec = 900_000;
+
   const timerStart = () => {
-    setInterval(() => {
-      let minute = Math.floor((seconds / 60) % 60);
-      let sec = Math.floor(seconds % 60);
-      seconds--;
-    }, 1000);
+    timing();
+    setIsActive(!isActive);
+  };
+
+  const timing = () => {
+    if (!isActive) {
+      interval.current = window.setInterval(() => {
+        setMinutes(Math.floor((sec / (1000 * 60)) % 60));
+        setSeconds(String(Math.floor((sec / 1000) % 60)));
+        sec -= 1000;
+      }, 1000);
+    } else {
+      clearInterval(interval.current);
+    }
   };
   return (
     <Box mt={'52px'}>
       <VStack alignItems={'center'} space={'26px'} mb={'10px'}>
         <VStack alignItems={'center'}>
-          <Heading color={'white'} fontSize={'35px'}>
-            Meditation
-          </Heading>
+          <Header title="Meditation" />
           <Text textAlign={'center'} color={'white'} opacity={0.5} fontSize={20}>
             Guided by a short introductory course, start trying meditation.
           </Text>
@@ -25,16 +41,21 @@ const Content: FC = () => {
         <Image
           justifyContent={'center'}
           alt="meditation"
-          source={require('../../../../assets/img/meditating.png')}
+          source={require('../../../../assets/img/meditation/meditating.png')}
           size={'2xl'}
           w={'333px'}
         />
         <Text fontSize={'38px'} color={'white'}>
-          45:00
+          {minutes}:{seconds}
         </Text>
       </VStack>
       <Center>
-        <MyButton title="Start now" color="teal" width={186} onPress={() => timerStart()} />
+        <MyButton
+          title={isActive ? 'Pause' : 'Start now'}
+          color="teal"
+          width={186}
+          onPress={timerStart}
+        />
       </Center>
     </Box>
   );

@@ -1,37 +1,37 @@
 import React, { FC } from 'react';
-import { FlatList, Box, Text, VStack, Center } from 'native-base';
+import { FlatList, Box, Text, VStack, Center, Pressable } from 'native-base';
 
 const Header: FC = () => {
   const data = [
     {
       month: 'May',
-      day: 25,
-      dayWeek: 'Sunday',
+      day: 19,
+      dayWeek: 'Fri',
     },
     {
       month: 'May',
-      day: 26,
-      dayWeek: 'Monday',
+      day: 20,
+      dayWeek: 'Sat',
     },
     {
       month: 'May',
-      day: 27,
-      dayWeek: 'Monday',
+      day: 21,
+      dayWeek: 'Sun',
     },
     {
       month: 'May',
-      day: 28,
-      dayWeek: 'Monday',
+      day: 22,
+      dayWeek: 'Mon',
     },
     {
       month: 'May',
-      day: 29,
-      dayWeek: 'Monday',
+      day: 23,
+      dayWeek: 'Tue',
     },
     {
       month: 'May',
-      day: 29,
-      dayWeek: 'Monday',
+      day: 24,
+      dayWeek: 'Wed',
     },
   ];
   return (
@@ -40,15 +40,26 @@ const Header: FC = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <Box mr={5} bg={'coolGray.400'} rounded={10}>
-              <VStack>
-                <Center>
-                  <Text color={'white'}>{item.month}</Text>
-                  <Text color={'white'}>{item.day}</Text>
-                  <Text color={'white'}>{item.dayWeek}</Text>
-                </Center>
-              </VStack>
-            </Box>
+            <Pressable>
+              {({ isHovered, isFocused, isPressed }) => {
+                return (
+                  <Box
+                    mr={5}
+                    bg={isPressed ? 'teal.400' : 'coolGray.400'}
+                    rounded={10}
+                    minW={'55px'}
+                    minH={'75px'}>
+                    <VStack>
+                      <Center>
+                        <Text color={'white'}>{item.month}</Text>
+                        <Text color={'white'}>{item.day}</Text>
+                        <Text color={'white'}>{item.dayWeek}</Text>
+                      </Center>
+                    </VStack>
+                  </Box>
+                );
+              }}
+            </Pressable>
           )}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
