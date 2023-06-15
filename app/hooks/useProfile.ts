@@ -22,7 +22,7 @@ export const useProfile = () => {
         query(collection(db, 'users'), where('_id', '==', user?.uid), limit(1)),
         (snapshot) => {
           const profile = snapshot.docs.map((d) => ({
-            ...(d.data() as Omit<IProfile, 'docId'>),
+            ...(d.data() as IProfile),
             docId: d.id,
           }))[0];
 
@@ -31,7 +31,7 @@ export const useProfile = () => {
           setIsLoading(false);
         },
       ),
-    [],
+    [profile.displayName],
   );
 
   const value = useMemo(
@@ -41,7 +41,7 @@ export const useProfile = () => {
       setName,
       name,
     }),
-    [],
+    [profile.displayName],
   );
   return value;
 };

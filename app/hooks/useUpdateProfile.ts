@@ -17,7 +17,6 @@ export const useUpdateProfile = (name: string, docId: string) => {
 
     try {
       const docRef = doc(db, 'users', docId);
-
       await updateDoc(docRef, {
         displayName: name,
       });

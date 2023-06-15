@@ -1,5 +1,5 @@
 import { Box, Center, VStack } from 'native-base';
-import React, { FC } from 'react';
+import React, { FC, createContext, useState } from 'react';
 import MyButton from '../../UI/Button';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import Header from '../../UI/Header';
@@ -9,8 +9,18 @@ interface IWelcome {
 }
 
 export const Welcome: FC<IWelcome> = ({ navigation }) => {
+  const [isReg, setIsReg] = useState(true);
+
   const loginHandler = () => {
-    navigation.navigate('Auth');
+    setIsReg(true);
+    console.log(isReg);
+    navigation.navigate('Auth', { isReg });
+  };
+
+  const registerHandler = () => {
+    setIsReg(false);
+    console.log(isReg);
+    navigation.navigate('Auth', { isReg });
   };
   return (
     <Center w="100%" h="100%" bg={'coolGray.600'}>
@@ -27,7 +37,7 @@ export const Welcome: FC<IWelcome> = ({ navigation }) => {
         <VStack mt="80%" space="28px" minW={321}>
           <MyButton color="teal" title="Login" onPress={() => loginHandler()} />
           <MyButton
-            onPress={() => loginHandler()}
+            onPress={() => registerHandler()}
             borderColor="teal.400"
             color="teal"
             variantColor="outline"

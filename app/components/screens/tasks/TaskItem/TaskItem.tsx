@@ -11,9 +11,7 @@ const TaskItem: FC<ITaskItem> = ({ items }) => {
     <Pressable>
       <Box rounded={'10px'} bg={'coolGray.400'} minH={'100px'} mb={'20px'}>
         <VStack p={'20px'}>
-          <Heading color={'white'} opacity={0.7}>
-            {items.desc}
-          </Heading>
+          <Heading color={'muted.300'}>{items.desc}</Heading>
           <Flex direction="row" mt={'10px'}>
             <Text color={'teal.400'}>{items.time}</Text>
             <Spacer />

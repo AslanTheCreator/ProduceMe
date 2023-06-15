@@ -1,20 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { Box, Center, HStack, Heading, VStack, Text, Spinner, Pressable } from 'native-base';
 import MyButton from '../../UI/Button';
 import { useAuth } from '../../../hooks/useAuth';
 import Field from '../../UI/Field';
+import { Props } from '../../../navigation/types';
 
 interface IData {
   email: string;
   password: string;
 }
 
-const Auth: FC = () => {
+const Auth: FC<Props> = ({ route }) => {
   const { isLoading, register, login } = useAuth();
 
-  const [isReg, setIsReg] = useState(false);
-
   const [data, setData] = useState<IData>({} as IData);
+
+  const { isReg } = route.params;
 
   const authHandler = async () => {
     const { email, password } = data;
@@ -55,7 +56,7 @@ const Auth: FC = () => {
                 <Text fontSize="12px" color={'coolGray.200'} opacity={0.9}>
                   Don’t have an account?{' '}
                 </Text>
-                <Pressable onPress={() => setIsReg(!isReg)}>
+                <Pressable>
                   <Text fontSize="12px" color={'white'} opacity={0.9}>
                     {isReg ? 'Register' : 'Login'}
                   </Text>

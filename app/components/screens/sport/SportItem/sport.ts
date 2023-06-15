@@ -7,7 +7,7 @@ export interface ISport {
   level?: string;
 }
 
-export const Sport = [
+export const Sport: ISport[] = [
   {
     title: 'Arm muscle',
     img: require('../../../../../assets/img/sport/arm.png'),

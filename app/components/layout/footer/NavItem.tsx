@@ -20,9 +20,9 @@ const NavItem: FC<INavItem> = ({ item, navigate, currentRoute }) => {
           size={'lg'}
           mb="8px"
           as={<AntDesign name={isActive ? item.iconNameActive : item.iconName} />}
-          color={'white'}
+          color={isActive ? 'teal.400' : 'white'}
         />
-        <Text fontSize={'12px'} color={'white'} opacity={0.8}>
+        <Text fontSize={'12px'} color={isActive ? 'teal.400' : 'white'} opacity={0.8}>
           {item.title}
         </Text>
       </Center>

@@ -10,6 +10,8 @@ import Profile from '../components/screens/profile/Profile';
 import { Welcome } from '../components/screens/welcome/Welcome';
 import Auth from '../components/screens/auth/Auth';
 import Footer from '../components/layout/footer/Footer';
+import Settings from '../components/screens/settings/Settings';
+import { RootStack } from './types';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +38,7 @@ export const Navigation: FC = () => {
   return (
     <>
       <NavigationContainer ref={ref}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Navigator screenOptions={{ headerShown: false }}>
           {user ? (
             <>
               <Stack.Screen name="Home" component={Home} />
@@ -44,14 +46,15 @@ export const Navigation: FC = () => {
               <Stack.Screen name="Tasks" component={Tasks} />
               <Stack.Screen name="Sport" component={Sport} />
               <Stack.Screen name="Profile" component={Profile} />
+              <Stack.Screen name="Settings" component={Settings} />
             </>
           ) : (
             <>
               <Stack.Screen name="Welcome" component={Welcome} />
-              <Stack.Screen name="Auth" component={Auth} />
+              <RootStack.Screen name="Auth" component={Auth} />
             </>
           )}
-        </Stack.Navigator>
+        </RootStack.Navigator>
       </NavigationContainer>
       {user && name && <Footer navigate={ref.navigate} currentRoute={name} />}
     </>

@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import {
+  Text,
   Box,
   Center,
   Icon,
@@ -66,18 +67,43 @@ const Content: FC = () => {
           p={'20px'}
           icon={<Icon as={AntDesign} name="plus" color={'white'} />}
         />
-        <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-          <Modal.Content maxWidth="400px">
+        <Modal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          _backdrop={{
+            _dark: {
+              bg: 'coolGray.800',
+            },
+            bg: 'black',
+          }}>
+          <Modal.Content maxWidth="400px" bg={'coolGray.400'}>
             <Modal.CloseButton />
-            <Modal.Header>Add Task</Modal.Header>
+            <Modal.Header bg={'coolGray.400'}>
+              <Text color={'muted.300'}>Add Task</Text>
+            </Modal.Header>
             <Modal.Body>
               <VStack space={2}>
-                <Field value={title} label="Desc" onChange={(v) => setTitle(v)} />
-                <Field value={status} label="Status" onChange={(v) => setStatus(v)} />
-                <Field value={time} label="Time" onChange={(v) => setTime(v)} />
+                <Field
+                  backgroundColor="coolGray.400"
+                  value={title}
+                  label="Desc"
+                  onChange={(v) => setTitle(v)}
+                />
+                <Field
+                  backgroundColor="coolGray.400"
+                  value={status}
+                  label="Status"
+                  onChange={(v) => setStatus(v)}
+                />
+                <Field
+                  backgroundColor="coolGray.400"
+                  value={time}
+                  label="Time"
+                  onChange={(v) => setTime(v)}
+                />
               </VStack>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer bg={'coolGray.400'}>
               <Button.Group space={2}>
                 <Button
                   variant="ghost"
