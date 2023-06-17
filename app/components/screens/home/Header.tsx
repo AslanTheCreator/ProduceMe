@@ -12,7 +12,7 @@ const Header: FC = () => {
     <Spinner />
   ) : (
     <HStack space={'14px'} alignItems={'center'}>
-      <AvatarProfile size="md" />
+      <AvatarProfile size="md" img={profile.avatar} />
       <Pressable onPress={() => navigate('Profile')}>
         <Text fontSize={'20px'} color={'white'} opacity={0.9}>
           Hello {profile.displayName}

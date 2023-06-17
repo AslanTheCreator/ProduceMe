@@ -13,13 +13,11 @@ export const Welcome: FC<IWelcome> = ({ navigation }) => {
 
   const loginHandler = () => {
     setIsReg(true);
-    console.log(isReg);
     navigation.navigate('Auth', { isReg });
   };
 
   const registerHandler = () => {
     setIsReg(false);
-    console.log(isReg);
     navigation.navigate('Auth', { isReg });
   };
   return (

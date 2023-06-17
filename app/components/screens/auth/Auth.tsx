@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Box, Center, HStack, Heading, VStack, Text, Spinner, Pressable } from 'native-base';
 import MyButton from '../../UI/Button';
 import { useAuth } from '../../../hooks/useAuth';

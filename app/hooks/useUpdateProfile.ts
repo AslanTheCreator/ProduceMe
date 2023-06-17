@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from './useAuth';
 import { getErrorMessage } from '../utils/Error';
-import { db } from '../firebase';
+import { db } from '../firebaseConfig';
 import { doc, updateDoc } from 'firebase/firestore';
 
-export const useUpdateProfile = (name: string, docId: string) => {
+export const useUpdateProfile = (docId: string, name?: string, avatar?: string) => {
   const { user } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +19,7 @@ export const useUpdateProfile = (name: string, docId: string) => {
       const docRef = doc(db, 'users', docId);
       await updateDoc(docRef, {
         displayName: name,
+        avatar,
       });
 
       setIsSuccess(true);

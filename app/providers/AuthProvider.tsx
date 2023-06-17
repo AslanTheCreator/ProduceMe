@@ -1,6 +1,6 @@
 import { User, onAuthStateChanged } from 'firebase/auth';
 import React, { FC, PropsWithChildren, createContext, useEffect, useMemo, useState } from 'react';
-import { register, db, login, logout, auth } from '../firebase';
+import { register, db, login, logout, auth } from '../firebaseConfig';
 import { addDoc, collection } from 'firebase/firestore';
 import { getErrorMessage } from '../utils/Error';
 

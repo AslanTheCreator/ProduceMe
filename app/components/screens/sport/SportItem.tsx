@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Box, Divider, Flex, Heading, Pressable, Text, VStack } from 'native-base';
-import { ISport } from './sport';
+import { ISport } from './types';
 import { ImageBackground } from 'react-native';
 
 interface ISportItem {
@@ -10,7 +10,10 @@ interface ISportItem {
 const SportItem: FC<ISportItem> = ({ items }) => {
   return (
     <Pressable>
-      <ImageBackground imageStyle={{ borderRadius: 25 }} resizeMode="cover" source={items.img}>
+      <ImageBackground
+        imageStyle={{ borderRadius: 25 }}
+        resizeMode="cover"
+        source={{ uri: items.img }}>
         <Box rounded={'10px'} minH={'150px'}>
           <VStack p={'20px'} pt={'90px'}>
             <Heading mb={'7px'} color={'white'}>

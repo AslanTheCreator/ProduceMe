@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from './useAuth';
 import { collection, limit, onSnapshot, query, where } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../firebaseConfig';
 
 interface IProfile {
   _id: string;
   displayName: string;
+  avatar: string;
   docId: string;
 }
 
@@ -15,6 +16,7 @@ export const useProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [profile, setProfile] = useState<IProfile>({} as IProfile);
   const [name, setName] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   useEffect(
     () =>
@@ -28,10 +30,11 @@ export const useProfile = () => {
 
           setProfile(profile);
           setName(profile.displayName);
+          setAvatar(profile.avatar);
           setIsLoading(false);
         },
       ),
-    [profile.displayName],
+    [],
   );
 
   const value = useMemo(
@@ -39,9 +42,11 @@ export const useProfile = () => {
       profile,
       isLoading,
       setName,
+      setAvatar,
       name,
+      avatar,
     }),
-    [profile.displayName],
+    [],
   );
   return value;
 };
