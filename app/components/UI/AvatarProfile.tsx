@@ -7,7 +7,7 @@ interface IAvatarProfile {
 }
 
 const AvatarProfile: FC<IAvatarProfile> = ({ size, img }) => {
-  return <Avatar bgColor={'coolGray.50'} size={size} source={{ uri: img }}></Avatar>;
+  return <Avatar bgColor={'coolGray.500'} size={size} source={{ uri: img }}></Avatar>;
 };
 
 export default AvatarProfile;

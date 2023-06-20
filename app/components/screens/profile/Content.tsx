@@ -1,5 +1,17 @@
-import React, { FC, useState } from 'react';
-import { Box, VStack, Text, Pressable, Icon, Spacer, HStack, Heading } from 'native-base';
+import React, { FC } from 'react';
+import {
+  Box,
+  VStack,
+  Text,
+  Pressable,
+  Icon,
+  Spacer,
+  HStack,
+  Heading,
+  Spinner,
+  useToast,
+  Button,
+} from 'native-base';
 import AvatarProfile from '../../UI/AvatarProfile';
 import { useProfile } from '../../../hooks/useProfile';
 import { Profile } from './ProfileItem/profile';
@@ -10,10 +22,14 @@ import * as ImagePicker from 'expo-image-picker';
 import { useUpdateProfile } from '../../../hooks/useUpdateProfile';
 
 const Content: FC = () => {
-  const { profile, name, avatar, setAvatar } = useProfile();
   const { navigate } = useNavigation();
 
-  const { updateProfile } = useUpdateProfile(profile.docId, name, avatar);
+  const { profile, name, photo, setPhoto, isLoading } = useProfile();
+  const { updateProfile, isLoading: isUpdateLoading } = useUpdateProfile(
+    profile.docId,
+    name,
+    photo,
+  );
 
   const update = () => {
     openImagePicker();
@@ -35,8 +51,9 @@ const Content: FC = () => {
 
     if (!pickerResult.canceled) {
       const uri = pickerResult.assets;
-      console.log(avatar);
-      setAvatar(uri[0].uri);
+      console.log(uri, 'Content');
+      setPhoto(uri[0].uri);
+      console.log(photo, 'Content');
     } else {
       console.log('Отменено пользователем');
     }
@@ -44,14 +61,19 @@ const Content: FC = () => {
 
   return (
     <Box mt={'20px'}>
-      <VStack alignItems={'center'} space={'1'}>
-        <Pressable onPress={update}>
-          <AvatarProfile size="2xl" img={profile.avatar} />
-        </Pressable>
-        <Text color={'tertiary.500'} opacity={0.9} fontSize={'30px'} fontWeight={'bold'}>
-          {profile.displayName}
-        </Text>
-      </VStack>
+      {isLoading ? (
+        <Spinner color={'emerald.500'} />
+      ) : (
+        <VStack alignItems={'center'} space={'1'}>
+          <Pressable onPress={update}>
+            <AvatarProfile size="2xl" img={photo} />
+          </Pressable>
+          <Text color={'tertiary.500'} opacity={0.9} fontSize={'30px'} fontWeight={'bold'}>
+            {name}
+          </Text>
+          <Button onPress={updateProfile}></Button>
+        </VStack>
+      )}
       <VStack mt={'20px'} space={'10px'}>
         <Heading color={'white'} opacity={0.5} size={'xs'}>
           Settings

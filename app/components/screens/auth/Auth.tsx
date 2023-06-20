@@ -21,7 +21,6 @@ const Auth: FC<Props> = ({ route }) => {
     const { email, password } = data;
     if (!isReg) await register(email, password);
     else await login(email, password);
-
     setData({} as IData);
   };
 

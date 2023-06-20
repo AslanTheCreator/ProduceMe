@@ -26,6 +26,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
       await addDoc(collection(db, 'users'), {
         _id: user.uid,
+        photoUrl: '',
         displayName: 'No name',
       });
     } catch (error) {

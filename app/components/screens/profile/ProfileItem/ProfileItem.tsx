@@ -1,5 +1,16 @@
 import React, { FC, useState } from 'react';
-import { VStack, Text, Pressable, Icon, Spacer, HStack, Button, Modal, Box } from 'native-base';
+import {
+  VStack,
+  Text,
+  Pressable,
+  Icon,
+  Spacer,
+  HStack,
+  Button,
+  Modal,
+  Box,
+  useToast,
+} from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import { IProfile } from './profile';
 import Field from '../../../UI/Field';
@@ -12,11 +23,23 @@ interface IProfileItem {
 
 const ProfileItem: FC<IProfileItem> = ({ items }) => {
   const [showModal, setShowModal] = useState(false);
-  const { name, setName, profile } = useProfile();
-  const { updateProfile } = useUpdateProfile(name, profile.docId);
+  const { name, setName, profile, photo } = useProfile();
+  const { updateProfile } = useUpdateProfile(profile.docId, name, photo);
+
+  const toast = useToast();
 
   const update = () => {
     updateProfile();
+    toast.show({
+      duration: 3000,
+      render: () => {
+        return (
+          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={10}>
+            Update Success
+          </Box>
+        );
+      },
+    });
     setShowModal(false);
   };
 

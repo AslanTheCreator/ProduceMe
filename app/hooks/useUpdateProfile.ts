@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
-import { useAuth } from './useAuth';
+import React, { useState, useEffect } from 'react';
 import { getErrorMessage } from '../utils/Error';
 import { db } from '../firebaseConfig';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useAuth } from './useAuth';
 
-export const useUpdateProfile = (docId: string, name?: string, avatar?: string) => {
+export const useUpdateProfile = (docId: string, name?: string, photo?: string) => {
   const { user } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const updateProfile = async () => {
+    console.log(photo, 'update profile');
+    useEffect(() => {
+      console.log(photo, 'updateProfile useEffect');
+    }, [photo]);
+
     setIsLoading(true);
 
     if (!user) return;
 
     try {
       const docRef = doc(db, 'users', docId);
+
       await updateDoc(docRef, {
         displayName: name,
-        avatar,
+        photoUrl: photo,
       });
 
-      setIsSuccess(true);
-
-      setTimeout(() => setIsLoading(false), 3000);
+      setIsLoading(false);
     } catch (error) {
       getErrorMessage(error);
     } finally {
@@ -32,5 +35,5 @@ export const useUpdateProfile = (docId: string, name?: string, avatar?: string) 
     }
   };
 
-  return { isLoading, updateProfile, isSuccess };
+  return { isLoading, updateProfile };
 };
