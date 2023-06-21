@@ -11,7 +11,7 @@ const Content: FC = () => {
       <Header title="Sport" />
       <VStack space={'15px'} mt={10}>
         {sport.map((item) => (
-          <SportItem key={item.title} items={item} />
+          <SportItem key={item._id} items={item} />
         ))}
       </VStack>
     </Box>

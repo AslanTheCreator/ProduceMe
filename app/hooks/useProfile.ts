@@ -52,7 +52,6 @@ export const useProfile = () => {
     };
 
     fetchProfileData();
-    console.log(photo, 'useprofile');
   }, [user?.uid]);
 
   const value = useMemo(
@@ -64,7 +63,7 @@ export const useProfile = () => {
       name,
       photo,
     }),
-    [],
+    [profile, isLoading, setName, setPhoto, name, photo],
   );
   return value;
 };

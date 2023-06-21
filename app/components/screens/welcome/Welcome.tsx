@@ -1,24 +1,21 @@
 import { Box, Center, VStack } from 'native-base';
 import React, { FC, createContext, useState } from 'react';
 import MyButton from '../../UI/Button';
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import Header from '../../UI/Header';
+import { useNavigation } from '@react-navigation/native';
 
-interface IWelcome {
-  navigation: NavigationProp<ParamListBase>;
-}
-
-export const Welcome: FC<IWelcome> = ({ navigation }) => {
+export const Welcome: FC = () => {
+  const { navigate } = useNavigation();
   const [isReg, setIsReg] = useState(true);
 
   const loginHandler = () => {
     setIsReg(true);
-    navigation.navigate('Auth', { isReg });
+    navigate('Auth', { isReg });
   };
 
   const registerHandler = () => {
     setIsReg(false);
-    navigation.navigate('Auth', { isReg });
+    navigate('Auth', { isReg });
   };
   return (
     <Center w="100%" h="100%" bg={'coolGray.600'}>

@@ -4,4 +4,6 @@ export interface ISport {
   img: string;
   time: string;
   level: string;
+  description: string;
+  keyWords: string;
 }

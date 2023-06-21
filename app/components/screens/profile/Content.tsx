@@ -51,9 +51,7 @@ const Content: FC = () => {
 
     if (!pickerResult.canceled) {
       const uri = pickerResult.assets;
-      console.log(uri, 'Content');
       setPhoto(uri[0].uri);
-      console.log(photo, 'Content');
     } else {
       console.log('Отменено пользователем');
     }
@@ -71,7 +69,6 @@ const Content: FC = () => {
           <Text color={'tertiary.500'} opacity={0.9} fontSize={'30px'} fontWeight={'bold'}>
             {name}
           </Text>
-          <Button onPress={updateProfile}></Button>
         </VStack>
       )}
       <VStack mt={'20px'} space={'10px'}>

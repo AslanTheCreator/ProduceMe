@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { HStack, Pressable, Spinner, Text } from 'native-base';
-import AvatarProfile from '../../UI/AvatarProfile';
+import AvatarProfile from '../../../UI/AvatarProfile';
 import { useNavigation } from '@react-navigation/native';
-import { useProfile } from '../../../hooks/useProfile';
+import { useProfile } from '../../../../hooks/useProfile';
 
 const Header: FC = () => {
   const { isLoading, name, photo } = useProfile();

@@ -1,6 +1,7 @@
 import { Pressable, Box, VStack, Heading, Text, Flex, Spacer } from 'native-base';
 import React, { FC } from 'react';
 import { ITask } from './task';
+import Block from '../../../UI/Block';
 
 interface ITaskItem {
   items: ITask;
@@ -9,18 +10,15 @@ interface ITaskItem {
 const TaskItem: FC<ITaskItem> = ({ items }) => {
   return (
     <Pressable>
-      <Box rounded={'10px'} bg={'coolGray.400'} minH={'100px'} mb={'20px'}>
-        <VStack p={'20px'}>
-          <Heading color={'muted.300'}>{items.desc}</Heading>
-          <Flex direction="row" mt={'10px'}>
-            <Text color={'teal.400'}>{items.time}</Text>
-            <Spacer />
-            <Text bg={'teal.400'} paddingX={'1'} borderRadius={'10px'} color={'white'}>
-              {items.status}
-            </Text>
-          </Flex>
-        </VStack>
-      </Box>
+      <Block height="120px" colorHeading={'muted.300'} contentHeading={items.desc} margin="20px">
+        <Flex direction="row">
+          <Text color={'teal.400'}>{items.time}</Text>
+          <Spacer />
+          <Text bg={'teal.400'} paddingX={'1'} borderRadius={'10px'} color={'white'}>
+            {items.status}
+          </Text>
+        </Flex>
+      </Block>
     </Pressable>
   );
 };

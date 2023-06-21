@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { IFacts } from './types';
+import { IFacts } from '../../types';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../../firebaseConfig';
-import { getErrorMessage } from '../../../utils/Error';
+import { db } from '../../../../../firebaseConfig';
+import { getErrorMessage } from '../../../../../utils/Error';
 
 export const useFacts = () => {
   const [facts, setFacts] = useState<IFacts | null>(null);

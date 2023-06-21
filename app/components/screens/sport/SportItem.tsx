@@ -2,14 +2,21 @@ import React, { FC } from 'react';
 import { Box, Divider, Flex, Heading, Pressable, Text, VStack } from 'native-base';
 import { ISport } from './types';
 import { ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 interface ISportItem {
   items: ISport;
 }
 
 const SportItem: FC<ISportItem> = ({ items }) => {
+  const { navigate } = useNavigation();
+
+  const handleSportPress = (items: ISport) => {
+    navigate('SportDetails', { items });
+  };
+
   return (
-    <Pressable>
+    <Pressable onPress={() => handleSportPress(items)}>
       <ImageBackground
         imageStyle={{ borderRadius: 25 }}
         resizeMode="cover"

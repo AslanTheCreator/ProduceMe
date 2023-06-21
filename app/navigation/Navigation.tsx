@@ -12,6 +12,7 @@ import Auth from '../components/screens/auth/Auth';
 import Footer from '../components/layout/footer/Footer';
 import Settings from '../components/screens/settings/Settings';
 import { RootStack } from './types';
+import SportDetails from '../components/screens/sportDetails/SportDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,7 @@ export const Navigation: FC = () => {
               <Stack.Screen name="Meditation" component={Meditation} />
               <Stack.Screen name="Tasks" component={Tasks} />
               <Stack.Screen name="Sport" component={Sport} />
+              <RootStack.Screen name="SportDetails" component={SportDetails} />
               <Stack.Screen name="Profile" component={Profile} />
               <Stack.Screen name="Settings" component={Settings} />
             </>

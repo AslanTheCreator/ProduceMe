@@ -10,7 +10,11 @@ export const Layout: FC<ILayout> = ({ children, isScrollView }) => {
   return (
     <Box h={'full'} w={'full'} bg={'coolGray.600'} safeArea>
       <Box pt="12px" mx={'auto'} w="90%">
-        {isScrollView ? <ScrollView>{children}</ScrollView> : children}
+        {isScrollView ? (
+          <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
+        ) : (
+          children
+        )}
       </Box>
     </Box>
   );
