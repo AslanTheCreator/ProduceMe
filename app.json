@@ -2,7 +2,7 @@
   "expo": {
     "name": "ProduceMe",
     "slug": "ProduceMe",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,7 +20,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.aslancreator.ProduceMe"
+      "package": "com.aslancreator.ProduceMe",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +30,12 @@
       "eas": {
         "projectId": "2222cce4-4c63-4bf3-9e02-e1ab18bdd3bb"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2222cce4-4c63-4bf3-9e02-e1ab18bdd3bb"
     }
   }
 }

@@ -1,17 +1,5 @@
 import React, { FC } from 'react';
-import {
-  Box,
-  VStack,
-  Text,
-  Pressable,
-  Icon,
-  Spacer,
-  HStack,
-  Heading,
-  Spinner,
-  useToast,
-  Button,
-} from 'native-base';
+import { Box, VStack, Text, Pressable, Icon, Spacer, HStack, Heading, Spinner } from 'native-base';
 import AvatarProfile from '../../UI/AvatarProfile';
 import { useProfile } from '../../../hooks/useProfile';
 import { Profile } from './ProfileItem/profile';

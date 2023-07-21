@@ -10,14 +10,17 @@
     "preview": {
       "android": {
         "buildType": "apk"
-      }
+      },
+      "channel": "preview"
     },
     "preview2": {
       "android": {
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
     "production": {}
